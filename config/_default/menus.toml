@@ -23,10 +23,10 @@
   #url = "/my-projects"
   #weight = 40
   
-[[main]]
-  name = "Blog posts"
-  url = "/post"
-  weight = 50
+#[[main]]
+  #name = "Blog posts"
+  #url = "/post"
+  #weight = 50
   
 #[[main]]
   #name = "bioRchy" Compile list of R packages in bioarch
