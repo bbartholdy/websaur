@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | WEBSAUR</title>
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Bjørn Peare Bartholdy, 2020</copyright><lastBuildDate>Thu, 16 Apr 2020 15:45:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu5b8ab339ac96d7ddbeb25f9ec9ced7d5_27764_512x512_fill_lanczos_center_2.png</url>
+      <title>Authors</title>
+      <link>/authors/</link>
+    </image>
+    
+  </channel>
+</rss>

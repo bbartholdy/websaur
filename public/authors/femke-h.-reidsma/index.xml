@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Femke H. Reidsma | WEBSAUR</title>
+    <link>/authors/femke-h.-reidsma/</link>
+      <atom:link href="/authors/femke-h.-reidsma/index.xml" rel="self" type="application/rss+xml" />
+    <description>Femke H. Reidsma</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Bjørn Peare Bartholdy, 2020</copyright><lastBuildDate>Thu, 16 Apr 2020 15:45:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu5b8ab339ac96d7ddbeb25f9ec9ced7d5_27764_512x512_fill_lanczos_center_2.png</url>
+      <title>Femke H. Reidsma</title>
+      <link>/authors/femke-h.-reidsma/</link>
+    </image>
+    
+    <item>
+      <title>Build-a-Calculus</title>
+      <link>/talk/aapa2020/</link>
+      <pubDate>Thu, 16 Apr 2020 15:45:00 +0000</pubDate>
+      <guid>/talk/aapa2020/</guid>
+      <description>&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;
+&lt;p&gt;This study presents a model calculus system, which will allow experimental research to be conducted on in vitro dental calculus. We grow oral multispecies biofilms on plastic pegs, which are inoculated with whole saliva and suspended in artificial saliva for 25 days. The mineral composition of the in vitro calculus was verified using FTIR spectroscopy and archaeological and modern reference calculus.&lt;/p&gt;
+&lt;p&gt;The biofilms were submerged in solutions (0.5% w/v) containing wheat and potato starches twice daily for six minutes. Over the course of the experiment the biofilms were exposed to a large quantity of wheat (ca. $45.43×10^6$) and potato (ca. $3.583×10^6$) starch grains, of which only a minor proportion was visible, microscopically, in thecalculus (0.0021% and 0.0018%, respectively). The proportion of small (&amp;lt;20 µm) grains recovered from the calculus for both wheat (0.0034%) and potato (0.0032%), was greater than for large (&amp;gt;20 µm) grains (0.0003% and 0.0007%, respectively). These results suggest that only a minor portion of an individual’s diet is retained in the dental calculus and that there is a size bias in the incorporation of starches, such that larger grains may be underrepresented.&lt;/p&gt;
+&lt;p&gt;This model calculus system can provide the framework to perform controlled experiments addressing fundamental questions and issues concerning dental calculus, which have yet to be explored. These include validation of sampling and extraction methods, the incorporation of dietary and other markers into the calculus matrix, and the effects of taphonomy.&lt;/p&gt;
+&lt;p&gt;This project was funded by the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation program [grant number STG–677576 (“HARVEST”)].&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
