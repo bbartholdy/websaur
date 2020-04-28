@@ -5,10 +5,14 @@ image:
   caption: ""
   focal_point: Smart
 links:
-- icon: twitter
+- icon: github
   icon_pack: fab
-  name: Follow
-  url: ""
+  name: Repository
+  url: https://github.com/bbartholdy/BAMSAUR
+- icon: globe
+  icon_pack: fas
+  name: App
+  url: https://websaur.shinyapps.io/bamsaurapp/
 slides: ""
 summary: Age-at-death estimation on skeletal remains using dental wear. 
 tags:
