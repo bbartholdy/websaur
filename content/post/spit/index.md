@@ -1,6 +1,8 @@
 ---
 title: Spit, Tartar, and Burial
 date: 2019-09-12
+tags:
+  - dental calculus
 summary: A blog post involving the growth of artificial dental calculus/tartar.
 math: true
 diagram: true
@@ -9,6 +11,7 @@ image:
   caption: 'Image credit: [**Hans Reniers**](https://unsplash.com/photos/lQGJCMY5qcM)'
 featured: true
 url_source: https://leidenarchaeologyblog.nl/articles/spit-tartar-and-burial-an-experiments-diary
+projects: [harvest]
 ---
 
 ## Summary

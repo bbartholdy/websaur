@@ -11,7 +11,7 @@ image:
   caption: 'Image credit: Mellisa Thew'
   focal_point: ""
   preview_only: false
-projects: []
+projects: [BAMSAUR]
 publication: '*International Journal of Osteoarchaeology, 29*(4)'
 publication_short: ""
 publication_types:

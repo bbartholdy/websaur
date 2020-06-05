@@ -16,7 +16,7 @@ links:
 slides: ""
 summary: Age-at-death estimation on skeletal remains using dental wear. 
 tags:
-- Dental
+- dental wear
 title: BAMSAUR
 url_code: ""
 url_pdf: ""
