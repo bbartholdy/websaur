@@ -38,12 +38,27 @@
   </url>
   
   <url>
-    <loc>/tags/dental/</loc>
+    <loc>/tags/calculus/</loc>
+    <lastmod>2020-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/calculus/</loc>
+    <lastmod>2020-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
     <lastmod>2020-04-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/dental-calculus/</loc>
+    <lastmod>2020-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/dental-wear/</loc>
     <lastmod>2020-04-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -54,6 +69,16 @@
   
   <url>
     <loc>/project/harvest/</loc>
+    <lastmod>2020-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/other/</loc>
+    <lastmod>2020-04-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/other/</loc>
     <lastmod>2020-04-13T00:00:00+00:00</lastmod>
   </url>
   
@@ -174,10 +199,6 @@
   
   <url>
     <loc>/authors/admin/</loc>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
   </url>
   
 </urlset>

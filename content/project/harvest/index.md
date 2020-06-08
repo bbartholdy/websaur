@@ -11,9 +11,12 @@ links:
   url: http://harvestproject.eu/
 slides: ""
 summary: Plant foods in human evolution.
+categories:
+- calculus
 tags:
-- Diet
-- Dental calculus
+- diet
+- calculus
+- dental calculus
 title: HARVEST Plant foods in Human Evolution
 url_code: ""
 url_pdf: ""

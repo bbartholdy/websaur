@@ -27,11 +27,11 @@ subtitle = ""
   
   [[content.filter_button]]
     name = "Calculus"
-    tag = "Calculus"
+    tag = "calculus"
   
   [[content.filter_button]]
     name = "Other"
-    tag = "Other"
+    tag = "other"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
