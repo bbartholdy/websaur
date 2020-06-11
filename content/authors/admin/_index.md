@@ -1,7 +1,7 @@
 ---
 authors:
 - admin
-bio: My research interests include dental anthropology (especially dental calculus), skeletal biology and statistics. This doesn't necessarily mean I'm good at it...
+bio: ""
 email: "b.p.bartholdy@arch.leidenuniv.nl"
 name: Bjørn Peare Bartholdy
 organizations:
@@ -44,3 +44,5 @@ user_groups:
 - Researchers
 - Visitors
 ---
+
+I am currently a PhD student working on Dr. Amanda Henry’s ERC-funded [HARVEST](http://harvestproject.eu/) project, which aims to further our understanding of food choice in human evolution. I am exploring the incorporation of food residues in dental calculus by examining their behaviour in a controlled lab setting using in vitro oral biofilm models, and aim to maximise the recovered dietary information from archaeological dental calculus.
