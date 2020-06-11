@@ -46,7 +46,7 @@ user_groups:
 - Visitors
 ---
 
-I am currently a PhD student working on Dr. Amanda Henry’s ERC-funded HARVEST project, which aims to further our understanding of food choice in human evolution. I am exploring the incorporation of food residues in dental calculus by examining their behaviour in a controlled lab setting using in vitro oral biofilm models, and aim to maximise the recovered dietary information from archaeological dental calculus.
+I am currently a PhD student working on Dr. Amanda Henry’s ERC-funded [HARVEST](http://harvestproject.eu/) project, which aims to further our understanding of food choice in human evolution. I am exploring the incorporation of food residues in dental calculus by examining their behaviour in a controlled lab setting using in vitro oral biofilm models, and aim to maximise the recovered dietary information from archaeological dental calculus.
 
 I obtained my BSc in Archaeology (with a concentration in biological anthropology) at the University of Calgary. My thesis explored the utility of micro-CT on osteoarthritic vertebrae, under the guidance of Dr. Mary Anne Katzenberg.
 
