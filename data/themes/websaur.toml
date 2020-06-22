@@ -1,14 +1,14 @@
 # Theme metadata
-name = "Websaur"
+name = "websaur"
 
 # Is theme light or dark?
 light = true
 
 # Primary
-primary = "#46518f"
+primary = "#7b8296"
 
 # Menu
-menu_primary = "#46518f" # 500
+menu_primary = "rgb(73, 88, 133)" # 500
 menu_text = "#fff"
 menu_text_active = "#a1a1a1" # A100
 menu_title = "#fff"
