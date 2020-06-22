@@ -28,5 +28,3 @@ url_slides: ""
 url_source: ""
 url_video: ""
 ---
-
-# There needs to be text here
