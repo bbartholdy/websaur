@@ -8,7 +8,7 @@ headless = true  # This file represents a page section.
 active = true  # Activate this widget? true/false
 weight = 11  # Order that this section will appear.
 
-title = "Bjørn Peare Bartholdy"
+title = "BJØRN PEARE BARTHOLDY"
 subtitle = "PhD Student"
 
 [design]
@@ -30,7 +30,7 @@ subtitle = "PhD Student"
   
   # Background image.
   image = "headers/home1.jpg"  # Name of image in `static/img/`.
-  image_darken = 0.4  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
+  image_darken = 0.55  # Darken the image? Range 0-1 where 0 is transparent and 1 is opaque.
   image_size = "cover"  #  Options are `cover` (default), `contain`, or `actual` size.
   image_position = "center"  # Options include `left`, `center` (default), or `right`.
   image_parallax = true  # Use a fun parallax-like fixed background effect? true/false
@@ -40,12 +40,12 @@ subtitle = "PhD Student"
 
 [design.spacing]
   # Customize the section spacing. Order is top, right, bottom, left.
-  padding = ["120px", "0", "120px", "0"]
+  padding = ["140px", "0", "140px", "0"]
 
 [advanced]
  # Custom CSS. 
  css_style = "text-align: center"
  
  # CSS class.
- css_class = "mini"
+ css_class = ""
 +++
