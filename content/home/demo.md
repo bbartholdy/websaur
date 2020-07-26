@@ -49,3 +49,35 @@ subtitle = "PhD Student"
  # CSS class.
  css_class = ""
 +++
+  <br>
+<ul class="network-icon" aria-hidden="true">
+  <li>
+    <a href="mailto:b.p.bartholdy@arch.leidenuniv.nl">
+      <i class="fas fa-envelope big-icon"></i>
+    </a>
+  </li>
+        
+  <li>
+    <a href="https://twitter.com/OsteoBjorn" target="_blank" rel="noopener">
+      <i class="fab fa-twitter big-icon"></i>
+    </a>
+  </li>
+        
+  <li>
+    <a href="https://scholar.google.com/citations?user=I_yFsYUAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar big-icon"></i>
+    </a>
+  </li>
+        
+  <li>
+    <a href="https://github.com/bbartholdy" target="_blank" rel="noopener">
+      <i class="fab fa-github big-icon"></i>
+    </a>
+  </li>
+
+  <li>
+    <a href="https://orcid.org/0000-0003-3985-1016" target="_blank" rel="noopener">
+      <i class="ai ai-orcid big-icon"></i>
+    </a>
+  </li>
+</ul>
