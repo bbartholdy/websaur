@@ -40,6 +40,9 @@ social:
 - icon: orcid
   icon_pack: ai
   link: https://orcid.org/0000-0003-3985-1016
+- icon: cv
+  icon_pack: ai
+  link: "files/cv.pdf"
 superuser: true
 user_groups:
 - Researchers
