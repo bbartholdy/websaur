@@ -1,0 +1,254 @@
+---
+title: Tidy Tuesday Tutorial
+author: admin
+date: '2020-10-12'
+tags:
+  - tidytuesday
+  - rmarkdown
+categories: []
+subtitle: ''
+summary: "A simple guide to participating in Tidy Tuesday"
+authors: []
+featured: false
+disable_jquery: no
+image:
+  placement: 3
+  caption: ''
+projects: []
+draft: false
+---
+
+
+
+<p>Tidy Tuesday is a weekly data project—you guessed it, every Tuesday—organised by the R for Data Science (R4DS) online learning community, to get R-coders to engage with the <strong>tidyverse</strong> ecosystem, and create good-looking plots. It is of course not a strict requirement to use the tools of <strong>tidyverse</strong>, and R-coders of all skill levels are welcome. It often gives you the opportunity to learn new methods by conducting analyses that you might not do on a regular basis. For me, this is any analysis dealing with text (I mainly do metric analyses). New datasets are provided by members of the R community, and are released on the <a href="https://github.com/rfordatascience/tidytuesday">rfordatascience</a> GitHub repo each week (usually by Monday).</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/static/tidytuesday_logo.jpg" alt="" />
+<p class="caption"><em>Image source: <a href="https://github.com/rfordatascience/tidytuesday/">rfordatascience/tidytuesday</a> on GitHub</em></p>
+</div>
+<p>R4DS provide an open and welcoming community, especially for newcomers, with the following guidelines (full list can be found <a href="https://github.com/rfordatascience/tidytuesday/blob/master/README.md">here</a>:</p>
+<blockquote>
+<p>We welcome all newcomers, enthusiasts, and experts to participate, but be mindful of a few things:
+3. This is NOT about criticizing the original article or graph. Real people made the graphs, collected or acquired the data! Focus on the provided dataset, learning, and improving your techniques in R.<br />
+4. This is NOT about criticizing or tearing down your fellow <code>#RStats</code> practitioners or their code! Be supportive and kind to each other! Like other’s posts and help promote the <code>#RStats</code> community!<br />
+6. Include a copy of the code used to create your visualization when you post to Twitter. Comment your code wherever possible to help yourself and others understand your process!<br />
+7. Focus on improving your craft, even if you end up with something simple!<br />
+8. Give credit to the original data source whenever possible.</p>
+</blockquote>
+<div id="before-you-start" class="section level2">
+<h2>Before you start</h2>
+<p>For this tutorial, I assume you have already downloaded R (and RStudio), and have a basic understanding of R. If not, there are many resources to learn, including <a href="https://r4ds.had.co.nz/">‘R for Data Science’</a>, and the <a href="https://rfortherestofus.com/courses/getting-started/?fbclid=IwAR1j7vsTlfCb_riOPdw2SZuv3AdEiE3q4zyD73wkbKD5SM4ZJMPuUxXUjjY">‘Getting Started with R’</a> course. RStudio Cloud also has <a href="https://rstudio.cloud/learn/primers">online tutorials</a> that don’t even require you to download R.</p>
+<p>For this tutorial you will need the following packages:</p>
+<ul>
+<li>tidyverse</li>
+<li>magick</li>
+<li>here</li>
+<li>cowplot</li>
+<li>tidytuesdayR (optional)</li>
+</ul>
+<pre class="r"><code># package installation
+install.packages(&quot;tidyverse&quot;)
+install.packages(&quot;magick&quot;)
+install.packages(&quot;tidytuesdayR&quot;) # if necessary</code></pre>
+</div>
+<div id="step-1-loading-required-packages-and-downloading-the-data" class="section level2">
+<h2>Step 1: Loading required packages and downloading the data</h2>
+<p>Well, technically step 1 should involve opening an R Script. So do that first. I’ll wait…</p>
+<p><img src="https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif" /></p>
+<p>Ok, now that you have an R Script ready, let’s get going!</p>
+<p>The first thing we need to do is load the necessary R packages.</p>
+<pre class="r"><code>library(tidyverse)
+library(cowplot)
+library(magick)</code></pre>
+<p>Downloading the data is as easy as <code>letters[1:3]</code>. The <a href="https://github.com/rfordatascience/tidytuesday/">rfordatascience/tidytuesday</a> GitHub repository provides two ways to download the data. You can use the <code>tt_load</code> function from the <strong>tidytuesdayR</strong> package, which will create a list of data frames. In this case there is only one data frame in the list, but on most weeks there will be more than one.</p>
+<pre class="r"><code>data &lt;- tidytuesdayR::tt_load(&#39;2020-10-06&#39;) # insert the date of the data you want to download
+tournament &lt;- data$tournament # store the data frame in a new variable</code></pre>
+<p>Alternatively, (my personal preference) download the data directly from GitHub using the <code>read_csv</code> function from the <strong>readr</strong> package (will be installed with the <strong>tidyverse</strong> package).</p>
+<pre class="r"><code>tournament &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-10-06/tournament.csv&#39;)</code></pre>
+<p>The data are actually not stored in a data frame, but a tibble, which is a <strong>tidyverse</strong> data frame; however, for the sake of simplicity I will refer to them as data frames. The rfordatascience <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-10-06/readme.md">GitHub repo</a> for the week will have a table with a short description of each variable, which you can use as a reference.</p>
+<p><img src="/img/tidytues/var_desc.png" /></p>
+<p>Now you are ready to ‘tidy’ and manipulate the data in any way you can think of! The only limit is you imagination (or, in my case, R-coding ability). If you’re not comfortable going off on your own yet, you can continue the tutorial.</p>
+</div>
+<div id="step-2-data-wrangling" class="section level2">
+<h2>Step 2: Data wrangling</h2>
+<div class="figure">
+<img src="/img/tidytues/wrangling.jpg" alt="" />
+<p class="caption"><em>A different kind of wrangling. Image source: gettyimages.</em></p>
+</div>
+<p>At this point you should have a vague idea of what you want to accomplish and which variables you will need to do this (or which new variables you will need to create). For this post we will be tracking the full tournament win/loss percentages for Baylor over time. I have no allegiance with Baylor (or any other team for that matter), but they have a cool logo.</p>
+<p>The following code can be read as: 1) take the tournament data frame, 2) then filter the data by the <code>school</code> variable to remove all entries that aren’t related to Baylor, 3) then select only the <code>school</code>, <code>year</code>, <code>full_percent</code>, and <code>tourney_finish</code> variables.</p>
+<pre class="r"><code>baylor &lt;- tournament %&gt;%
+  filter(school == &quot;Baylor&quot;) %&gt;% # filter only data for Baylor
+  select(school, year, full_percent, tourney_finish) # taking only the variables I will need.</code></pre>
+<p>That’s it. That’s all we need. Of course you can do more elaborate wrangling and create new variables, but the purpose of this tutorial is to keep things simple (and hide the lack of inspiration I had for this week).</p>
+</div>
+<div id="step-3-plotting-the-data" class="section level2">
+<h2>Step 3: Plotting the data</h2>
+<p>To plot the data we will be using the <strong>ggplot2</strong> package (which is installed and loaded with the <strong>tidyverse</strong> package). The essence of ggplot is creating a base plot and then adding layers… many layers…</p>
+<p>The plotting here will be quite simple. For a more detailed guide of ggplot, see <a href="https://r4ds.had.co.nz/data-visualisation.html" class="uri">https://r4ds.had.co.nz/data-visualisation.html</a> or the wide variety of other tutorials available online.</p>
+<p>The base plot will consist of the <code>year</code> and <code>full_percent</code> variables, which should be defined in the <code>aes</code> function. We also need to specify what data we will be using ,i.e. our newly created <code>baylor</code> data frame.</p>
+<pre class="r"><code>ggplot(baylor, aes(x = year, y = full_percent)) # specify data and variables</code></pre>
+<p><img src="/post/tidytuesday/index_files/figure-html/plot1-1.png" width="672" /></p>
+<p>No, your device is not behaving weird, there is no actual plot yet, only an outline (if you can’t see the outline then your device is probably being weird…).</p>
+<p>So far we have just specified the dimensions. To add some actual substance to the plot, we need to specify what type of plot we want to use. In this case we will be using a simple line plot, with the win/loss percentage on the y-axis, and the year of the result on the x-axis. We will also be adding points to the plot to make it more clear for which years data are available.</p>
+<pre class="r"><code>ggplot(baylor, aes(x = year, y = full_percent)) + # specify data and variables
+  geom_path() + # add the line plot
+  geom_point()  # add points to the plot</code></pre>
+<p><img src="/post/tidytuesday/index_files/figure-html/plot2-1.png" width="672" /></p>
+<p>It would also be nice to see where the team finished in the tournament each year. We can add text to a plot using the <code>geom_text</code> function.</p>
+<pre class="r"><code>ggplot(baylor, aes(x = year, y = full_percent)) + # specify data and variables
+  geom_path() + # add the lines
+  geom_point() +  # add the points to the plot
+  geom_text(aes(label = paste0(tourney_finish))) # this will label each point with the associated values from the tourney_finish variable</code></pre>
+<p><img src="/post/tidytuesday/index_files/figure-html/plot3-1.png" width="672" /></p>
+<p>Since this isn’t very legible, we will need to use the <code>nudge_x</code> and <code>nudge_y</code> functions to move the text in the x and/or y direction. Normally you might be able to specify a single value (scale depends on the axis scale), but since some points will have to move up, others down, and some left/right, we will have to use a vector with the same number of values as the data (n = 17).</p>
+<pre class="r"><code>ggplot(baylor, aes(x = year, y = full_percent)) + # specify data and variables
+  geom_path() + # add the lines
+  geom_point() +  # add the points to the plot
+  geom_text(aes(label = paste0(tourney_finish)), # insert the tourney finish variable
+            nudge_y = c(-2, 2, -2, 2, -2, -2, -2, 2, -2, 0, 2, 0, -2, -2, 2, -2, 2),
+            nudge_x = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.75, 0, 0.75, 0, 0 ,0 , 0, 0)) # this will prevent the text and points from overlapping</code></pre>
+<p><img src="/post/tidytuesday/index_files/figure-html/plot4-1.png" width="672" /></p>
+<p>Better.</p>
+<p>Now we have a plot, but it’s not exactly pretty.</p>
+</div>
+<div id="step-4-editing-the-plot" class="section level2">
+<h2>Step 4: Editing the plot</h2>
+<p>Most of the prettification will be performed using the <code>theme()</code> function, but first it would be good to add a title and clean up the axis labels. This can be done using the <code>labs</code> function. Remember to give credit to the people who provided the dataset (in this case <a href="https://fivethirtyeight.com/features/louisiana-tech-was-the-uconn-of-the-80s/">FiveThirtyEight</a>), and add a little self-advertising. This can be done in the caption.</p>
+<pre class="r"><code>ggplot(baylor, aes(x = year, y = full_percent)) + 
+  geom_path() + 
+  geom_point() +  
+  geom_text(aes(label = paste0(tourney_finish)), 
+            nudge_y = c(-2, 2, -2, 2, -2, -2, -2, 2, -2, 0, 2, 0, -2, -2, 2, -2, 2),
+            nudge_x = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.75, 0, 0.75, 0, 0 ,0 , 0, 0)) + 
+  labs(title = &quot;Baylor NCAA Tournament History&quot;, # create title
+       subtitle = &quot;Total win/loss percentage and end result by year&quot;, # create subtitle
+      x = &quot;Year&quot;, y = &quot;Total win/loss percentage&quot;, # create axis titles
+      caption = &quot;@osteobjorn | #TidyTuesday 06-10-2020 | source: FiveThirtyEight&quot;) # create caption</code></pre>
+<p><img src="/post/tidytuesday/index_files/figure-html/plot%205-1.png" width="672" /></p>
+<p>Now it’s time to add a bit of colour (and a whole lot of WOW!). For this we will be using the official Baylor colours, which are green and yellow. A quick Google search using ‘baylor colors’ gives us the colours’ hex (dark green = #003015; yellow = #FFBC19) that we can use in the plot. Using the <code>theme()</code> function, you can also change the font size, colour, type, etc. We’re also going to remove the y-axis title, since it’s not really relevant to know the exact win/loss percentage.</p>
+<pre class="r"><code>ggplot(baylor, aes(x = year, y = full_percent)) +
+  geom_path() + 
+  geom_point() +  
+  geom_text(aes(label = paste0(tourney_finish)), 
+            nudge_y = c(-2, 2, -2, 2, -2, -2, -2, 2, -2, 0, 2, 0, -2, -2, 2, -2, 2),
+            nudge_x = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.75, 0, 0.75, 0, 0 ,0 , 0, 0)) + 
+  labs(title = &quot;Baylor NCAA Tournament History&quot;,
+       subtitle = &quot;Total win/loss percentage and end result by year&quot;,
+      x = &quot;Year&quot;,
+      caption = &quot;@osteobjorn | #TidyTuesday 06-10-2020 | source: FiveThirtyEight&quot;) +
+  theme(plot.background = element_rect(fill = &quot;#003015&quot;), # background colour
+        plot.title = element_text(colour = &quot;#FFBC19&quot;, # text colour
+                                  size = 20, # font size
+                                  face = &quot;bold&quot;), # bold text
+        plot.subtitle = element_text(colour = &quot;#FFBC19&quot;,
+                                     size = 14),
+        plot.caption = element_text(colour = &quot;#FFBC19&quot;),
+        axis.text = element_text(colour = &quot;#FFBC19&quot;),
+        axis.title.x = element_blank(), # remove x-axis title
+        axis.title.y = element_blank(), # remove y-axis title
+        axis.text.y = element_blank()) # remove y-axis values</code></pre>
+<p><img src="/post/tidytuesday/index_files/figure-html/plot6-1.png" width="672" /></p>
+</div>
+<div id="step-5-finishing-touches" class="section level2">
+<h2>Step 5: Finishing touches</h2>
+<p>We could stop there, but the default grey ggplot is not exactly a great visual. It would look much better (in my opinion) if the plot was integrated with the background. This means we will have to remove the gridlines and add the same green as the background, as well as create a little space between the plot and the edges of the picture.</p>
+<pre class="r"><code>ggplot(baylor, aes(x = year, y = full_percent)) +
+  geom_path() + 
+  geom_point() +  
+  geom_text(aes(label = paste0(tourney_finish)), 
+            nudge_y = c(-2, 2, -2, 2, -2, -2, -2, 2, -2, 0, 2, 0, -2, -2, 2, -2, 2),
+            nudge_x = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.75, 0, 0.75, 0, 0 ,0 , 0, 0)) + 
+  labs(title = &quot;Baylor NCAA Tournament History&quot;,
+       subtitle = &quot;Total win/loss percentage and end result by year&quot;,
+      x = &quot;Year&quot;,
+      caption = &quot;@osteobjorn | #TidyTuesday 06-10-2020 | source: FiveThirtyEight&quot;) +
+  theme(plot.background = element_rect(fill = &quot;#003015&quot;),
+        plot.title = element_text(colour = &quot;#FFBC19&quot;,
+                                  size = 20,
+                                  face = &quot;bold&quot;),
+        plot.subtitle = element_text(colour = &quot;#FFBC19&quot;,
+                                     size = 14),
+        plot.caption = element_text(colour = &quot;#FFBC19&quot;),
+        axis.text = element_text(colour = &quot;#FFBC19&quot;),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        plot.margin = unit(c(1,1,1,1), &quot;cm&quot;), # create a 1 cm margin
+        panel.background = element_rect(fill = &quot;#003015&quot;), # green plot background
+        panel.grid = element_blank()) # remove the gridlines</code></pre>
+<p><img src="/post/tidytuesday/index_files/figure-html/plot7-1.png" width="672" /></p>
+<p>With the new dark green background the plot is not very visible, so it would be best to change the colour of the plot. More yellow is probably too boring, so we will be making it white. To do this we have to go back to the <code>geom_</code> functions at the top of our code.</p>
+<pre class="r"><code>ggplot(baylor, aes(x = year, y = full_percent)) +
+  geom_path(col = &quot;white&quot;) + 
+  geom_point(col = &quot;white&quot;) +  
+  geom_text(aes(label = paste0(tourney_finish)),
+            col = &quot;white&quot;,
+            nudge_y = c(-2, 2, -2, 2, -2, -2, -2, 2, -2, 0, 2, 0, -2, -2, 2, -2, 2),
+            nudge_x = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.75, 0, 0.75, 0, 0 ,0 , 0, 0)) + 
+  labs(title = &quot;Baylor NCAA Tournament History&quot;,
+       subtitle = &quot;Total win/loss percentage and end result by year&quot;,
+      x = &quot;Year&quot;,
+      caption = &quot;@osteobjorn | #TidyTuesday 06-10-2020 | source: FiveThirtyEight&quot;) +
+  theme(plot.background = element_rect(fill = &quot;#003015&quot;), # background colour
+        plot.title = element_text(colour = &quot;#FFBC19&quot;, # text colour
+                                  size = 20, # font size
+                                  face = &quot;bold&quot;), # bold text
+        plot.subtitle = element_text(colour = &quot;#FFBC19&quot;,
+                                     size = 14),
+        plot.caption = element_text(colour = &quot;#FFBC19&quot;),
+        axis.text = element_text(colour = &quot;#FFBC19&quot;),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        plot.margin = unit(c(1,1,1,1), &quot;cm&quot;),
+        panel.background = element_rect(fill = &quot;#003015&quot;),
+        panel.grid = element_blank())</code></pre>
+<p><img src="/post/tidytuesday/index_files/figure-html/plot8-1.png" width="672" /></p>
+<p>Feel free to play around with the colours, text size, font, etc.</p>
+<p>It still feels like something is missing… the main reason I chose Baylor was the cool logo (a legitimate reason for liking a team, right?). So, finally, we can place the logo on the plot. Admittedly, I was going for a watermark but reached the limit of my abilities (and time I could devote to this…), so if anyone knows how to do this, please let me know.</p>
+<p>First upload the image (I have the logo stored in a folder called ‘img’);</p>
+<pre class="r"><code>img &lt;- here::here(&quot;img&quot;, &quot;logo1.png&quot;) %&gt;% # upload the Baylor logo
+  image_read()</code></pre>
+<p>store the plot in a variable;</p>
+<pre class="r"><code>p &lt;- ggplot(baylor, aes(x = year, y = full_percent)) +
+  geom_path(col = &quot;white&quot;) + 
+  geom_point(col = &quot;white&quot;) +  
+  geom_text(aes(label = paste0(tourney_finish)),
+            col = &quot;white&quot;,
+            nudge_y = c(-2, 2, -2, 2, -2, -2, -2, 2, -2, 0, 2, 0, -2, -2, 2, -2, 2),
+            nudge_x = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.75, 0, 0.75, 0, 0 ,0 , 0, 0)) +
+  labs(title = &quot;Baylor NCAA Tournament History&quot;,
+       subtitle = &quot;Total win/loss percentage and end result by year&quot;,
+      x = &quot;Year&quot;,
+      caption = &quot;@osteobjorn | #TidyTuesday 06-10-2020 | source: FiveThirtyEight&quot;) +
+  theme(plot.background = element_rect(fill = &quot;#003015&quot;), # background colour
+        plot.title = element_text(colour = &quot;#FFBC19&quot;, # text colour
+                                  size = 20, # font size
+                                  face = &quot;bold&quot;), # bold text
+        plot.subtitle = element_text(colour = &quot;#FFBC19&quot;,
+                                     size = 14),
+        plot.caption = element_text(colour = &quot;#FFBC19&quot;),
+        axis.text = element_text(colour = &quot;#FFBC19&quot;),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        plot.margin = unit(c(1,1,1,1), &quot;cm&quot;),
+        panel.background = element_rect(fill = &quot;#003015&quot;),
+        panel.grid = element_blank())</code></pre>
+<p>and then insert the logo in the corner with the <code>ggdraw</code> function from the <strong>cowplot</strong> package.</p>
+<pre class="r"><code>ggdraw() +
+  draw_plot(p) + # draw plot
+  draw_image(img, scale = 0.2, hjust = -0.4, vjust = 0.3) # draw logo on top of plot</code></pre>
+<p><img src="/post/tidytuesday/index_files/figure-html/plot10-1.png" width="672" /></p>
+</div>
+<div id="step-6-share-with-the-world" class="section level2">
+<h2>Step 6: Share with the world!</h2>
+<p>To save the plot, use the <code>ggsave()</code> function.</p>
+<pre class="r"><code>ggsave(&quot;baylor.png&quot;, width = 9, height = 7, units = &quot;in&quot;)</code></pre>
+<p>Now upload the picture and code to GitHub (one of the most important aspects of Tidy Tuesday is code sharing). Share the picture on Twitter with the #tidytuesday hashtag, the image, and a link to your GitHub repository.</p>
+<!-- embed tidytuesday tweet -->
+{{< tweet 1308743258932158465 >}}
+<p>Also, check out the #TidyTuesday hashtag on twitter to see plots that are much nicer than this one. When you see one you like, go to their GitHub page and see how they created it!</p>
+<p>Now you are ready. Go make something awesome!</p>
+<p><img src="https://media.giphy.com/media/QU4ZKqdjnolB4hrMuG/giphy.gif" /></p>
+</div>
