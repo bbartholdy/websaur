@@ -15,7 +15,7 @@ image:
   placement: 3
   caption: ''
 projects: []
-draft: true
+draft: false
 ---
 
 ```{r setup, include=FALSE}
