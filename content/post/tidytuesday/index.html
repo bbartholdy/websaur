@@ -49,6 +49,7 @@ draft: false
 install.packages(&quot;tidyverse&quot;)
 install.packages(&quot;cowplot&quot;)
 install.packages(&quot;magick&quot;)
+install.packages(&quot;here&quot;)
 install.packages(&quot;tidytuesdayR&quot;) # if necessary</code></pre>
 </div>
 <div id="step-1-loading-required-packages-and-downloading-the-data" class="section level2">
@@ -207,11 +208,8 @@ tournament &lt;- data$tournament # store the data frame in a new variable</code>
 <p><img src="/post/tidytuesday/index_files/figure-html/plot8-1.png" width="672" /></p>
 <p>Feel free to play around with the colours, text size, font, etc.</p>
 <p>It still feels like something is missing… the main reason I chose Baylor was the cool logo (a legitimate reason for liking a team, right?). So, finally, we can place the logo on the plot. Admittedly, I was going for a watermark but reached the limit of my abilities (and time I could devote to this…), so if anyone knows how to do this, please let me know.</p>
-<p>Save the image:</p>
-<p><img src="/img/tidytues/logo1.png" /></p>
-<p>Upload the image (I have the logo stored in a folder called ‘img’);</p>
-<pre class="r"><code>img &lt;- here::here(&quot;img&quot;, &quot;logo1.png&quot;) %&gt;% # upload the Baylor logo
-  image_read()</code></pre>
+<p>Upload the image;</p>
+<pre class="r"><code>img &lt;- image_read(path = &quot;https://www.prepsportswear.com/media/images/college_logos/300x300/2626586_mktg_logo.png&quot;)  # upload the baylor logo</code></pre>
 <p>store the plot in a variable;</p>
 <pre class="r"><code>p &lt;- ggplot(baylor, aes(x = year, y = full_percent)) +
   geom_path(col = &quot;white&quot;) + 
