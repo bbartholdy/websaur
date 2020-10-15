@@ -23,8 +23,6 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(cowplot)
 library(magick)
-img <- here::here("static/img/tidytues", "logo.png") %>% # upload the Baylor logo
-  image_read()
 tournament <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-10-06/tournament.csv')
 ```
 
@@ -49,7 +47,6 @@ For this tutorial you will need the following packages:
 
  - tidyverse
  - magick
- - here
  - cowplot
  - tidytuesdayR (optional)
 
@@ -58,7 +55,6 @@ For this tutorial you will need the following packages:
 install.packages("tidyverse")
 install.packages("cowplot")
 install.packages("magick")
-install.packages("here")
 install.packages("tidytuesdayR") # if necessary
 ```
 
@@ -270,9 +266,8 @@ It still feels like something is missing... the main reason I chose Baylor was t
 
 Upload the image;
 
-```{r img-upload, eval=FALSE}
-img <- here::here("img", "logo.png") %>% # upload the Baylor logo
-  image_read()
+```{r img-upload}
+img <- image_read(path = "https://www.prepsportswear.com/media/images/college_logos/300x300/2626586_mktg_logo.png")  # upload the baylor logo
 ```
 
 store the plot in a variable;
