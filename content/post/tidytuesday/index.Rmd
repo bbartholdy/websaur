@@ -56,6 +56,7 @@ For this tutorial you will need the following packages:
 ```{r eval=FALSE}
 # package installation
 install.packages("tidyverse")
+install.packages("cowplot")
 install.packages("magick")
 install.packages("tidytuesdayR") # if necessary
 ```
@@ -323,14 +324,14 @@ To save the plot, use the `ggsave()` function.
 ggsave("baylor.png", width = 9, height = 7, units = "in")
 ```
 
-Now upload the picture and code to GitHub (one of the most important aspects of Tidy Tuesday is code sharing). Share the picture on Twitter with the #tidytuesday hashtag, the image, and a link to your GitHub repository.
+Now upload the picture and code to GitHub. Share the picture on Twitter with the #tidytuesday hashtag, the image, and a link to your GitHub repository.
 
 <!-- embed tidytuesday tweet -->
 `r htmltools::HTML("{{< tweet 1308743258932158465 >}}")`
 
 Also, check out the #TidyTuesday hashtag on twitter to see plots that are much nicer than this one. When you see one you like, go to their GitHub page and see how they created it!
 
-The R Script is of course available on my [GitHub](https://github.com/bbartholdy/tidytuesday/blob/master/06-10-2020/ncaa.R)
+The R Script is of course available on [GitHub](https://github.com/bbartholdy/tidytuesday/blob/master/06-10-2020/ncaa.R)
 
 Now you are ready. Go make something awesome!
 
