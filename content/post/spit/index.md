@@ -3,7 +3,7 @@ title: Spit, Tartar, and Burial
 date: 2019-09-12
 tags:
   - dental calculus
-summary: A blog post involving the growth of artificial dental calculus/tartar.
+summary: A blog post involving the growth of artificial dental calculus with known quantities of dietary starches.
 math: true
 diagram: true
 image:

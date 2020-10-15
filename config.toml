@@ -19,8 +19,6 @@ copyright = "&copy; Bjørn Peare Bartholdy, {year}"
 ## Advanced options below ##
 ############################
 
-# Name of Academic theme folder in `themes/`.
-theme = "hugo-academic"
 
 # Get last modified date for content from Git?
 enableGitInfo = false
@@ -70,3 +68,8 @@ ignoreFiles = ["\\.ipynb$", ".ipynb_checkpoints$", "\\.Rmd$", "\\.Rmarkdown$", "
   category = "categories"
   publication_type = "publication_types"
   author = "authors"
+
+# added for update of the hugo academic theme 03-09-2020   
+[module]
+  [[module.imports]]
+    path = "github.com/wowchemy/wowchemy-hugo-modules/wowchemy"

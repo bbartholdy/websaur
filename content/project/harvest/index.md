@@ -10,7 +10,7 @@ links:
   name: Project Website
   url: http://harvestproject.eu/
 slides: ""
-summary: Plant foods in human evolution.
+summary: ERC-funded project on plant foods in human evolution.
 categories:
 - calculus
 tags:
@@ -26,7 +26,7 @@ url_video: ""
 
 ## HARVEST Project
 
-Description from the HARVEST project [website](http://harvestproject.eu/)
+Description from the HARVEST project [website](http://harvestproject.eu/).
 
 Plant foods comprise the majority of most human diets, yet the potential importance of these foods in human evolution is often overlooked. Using a behavioral ecology framework, the HARVEST project explores fundamental questions: Why did hominins choose to eat certain plants? What were their foraging goals? 
 
