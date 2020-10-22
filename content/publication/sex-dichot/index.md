@@ -1,7 +1,7 @@
 ---
 abstract: ""
 authors:
-- Bartholdy, BP.
+- Bartholdy, BP
 - E. Sandoval
 - MLP. Hoogland
 - S. Schrader
