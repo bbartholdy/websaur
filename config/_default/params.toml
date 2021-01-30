@@ -120,7 +120,7 @@ contact_links = [
 sharing_image = ""
 
 # Twitter username (without @). Used when a visitor shares your site on Twitter.
-twitter = ""
+twitter = "OsteoBjorn"
 
 ############################
 ## Regional Settings
@@ -161,6 +161,11 @@ abstract_length = 135
 # Load JS plugins
 #   E.g. To load `/assets/js/custom.js`, set `plugins_js = ["custom"]`.
 plugins_js  = []
+
+# Icon packs
+[icon.pack]
+  # activate academic icons
+  ai = true
 
 # Avatars.
 # An avatar is an image that appears next to a user's name.

@@ -15,17 +15,14 @@ image:
   placement: 3
   caption: ''
 projects: []
-draft: true
+draft: false
 ---
-
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(cowplot)
 library(magick)
-img <- here::here("static/img/tidytues", "logo1.png") %>% # upload the Baylor logo
-  image_read()
 tournament <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-10-06/tournament.csv')
 ```
 
@@ -50,13 +47,13 @@ For this tutorial you will need the following packages:
 
  - tidyverse
  - magick
- - here
  - cowplot
  - tidytuesdayR (optional)
 
 ```{r eval=FALSE}
 # package installation
 install.packages("tidyverse")
+install.packages("cowplot")
 install.packages("magick")
 install.packages("tidytuesdayR") # if necessary
 ```
@@ -267,15 +264,10 @@ Feel free to play around with the colours, text size, font, etc.
 
 It still feels like something is missing... the main reason I chose Baylor was the cool logo (a legitimate reason for liking a team, right?). So, finally, we can place the logo on the plot. Admittedly, I was going for a watermark but reached the limit of my abilities (and time I could devote to this...), so if anyone knows how to do this, please let me know.
 
-Save the image:
+Upload the image;
 
-![](/img/tidytues/logo1.png)
-
-Upload the image (I have the logo stored in a folder called 'img');
-
-```{r img-upload, eval=FALSE}
-img <- here::here("img", "logo1.png") %>% # upload the Baylor logo
-  image_read()
+```{r img-upload}
+img <- image_read(path = "https://www.prepsportswear.com/media/images/college_logos/300x300/2626586_mktg_logo.png")  # upload the baylor logo
 ```
 
 store the plot in a variable;
@@ -331,7 +323,7 @@ Now upload the picture and code to GitHub (one of the most important aspects of 
 
 Also, check out the #TidyTuesday hashtag on twitter to see plots that are much nicer than this one. When you see one you like, go to their GitHub page and see how they created it!
 
-The R Script is of course available on my [GitHub](https://github.com/bbartholdy/tidytuesday/blob/master/06-10-2020/ncaa.R)
+The R Script is of course available on [GitHub](https://github.com/bbartholdy/tidytuesday/blob/master/06-10-2020/ncaa.R)
 
 Now you are ready. Go make something awesome!
 
