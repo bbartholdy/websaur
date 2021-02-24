@@ -7,7 +7,9 @@ address:
   region: ""
   street: ""
 all_day: false
-authors: [bjorn, Amanda G. Henry]
+authors: 
+ - bjorn
+ - Amanda G. Henry
 date: "2018-09-21T14:30:00Z"
 date_end: "2018-09-21T14:45:00Z"
 event: ISBA 8

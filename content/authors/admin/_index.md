@@ -39,7 +39,7 @@ education:
   - course: BSc in Archaeology
     institution: University of Calgary
     year: 2015
-superuser: true
+superuser: false
 user_groups:
 - Researchers
 - Visitors

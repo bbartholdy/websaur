@@ -1,4 +1,6 @@
 ---
+name: Bjørn Peare Bartholdy
+title: Bjørn Peare Bartholdy
 authors:
 - bjorn
 bio: My research interests include dental anthropology, skeletal biology, and statistics. This doesn't necessarily mean I'm good at it...
@@ -19,7 +21,6 @@ interests:
 - Palaeodietary reconstruction
 - Skeletal Biology
 - Statistics
-name: Bjørn Peare Bartholdy
 organizations:
 - name: Leiden University
   url: "https://www.universiteitleiden.nl/en/staffmembers/bjorn-peare-bartholdy#tab-1"

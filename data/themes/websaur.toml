@@ -5,12 +5,12 @@ name = "websaur"
 light = true
 
 # Primary
-primary = "#7b8296"
+primary = "#808bab"
 
 # Menu
 menu_primary = "rgb(73, 88, 133)" # 500 
 menu_text = "#fff"
-menu_text_active = "#b8b8b8" # A100
+menu_text_active = "#808bab" # A100
 menu_title = "#fff"
 
 # Home sections
