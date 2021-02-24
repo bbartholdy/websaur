@@ -38,6 +38,9 @@ social:
 - icon: github
   icon_pack: fab
   link: https://github.com/bbartholdy
+- icon: osf
+  icon_pack: ai
+  link: https://osf.io/2cyj7
 - icon: orcid
   icon_pack: ai
   link: https://orcid.org/0000-0003-3985-1016

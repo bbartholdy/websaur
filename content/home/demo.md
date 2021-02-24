@@ -74,6 +74,12 @@ subtitle = "PhD Student"
       <i class="fab fa-github big-icon"></i>
     </a>
   </li>
+  
+  <li>
+    <a href="https://https://osf.io/2cyj7/" target="_blank" rel="noopener">
+      <i class="ai ai-osf big-icon"></i>
+    </a>
+  </li>
 
   <li>
     <a href="https://orcid.org/0000-0003-3985-1016" target="_blank" rel="noopener">

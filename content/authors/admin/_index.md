@@ -19,6 +19,9 @@ social:
 - icon: orcid
   icon_pack: ai
   link: https://orcid.org/0000-0003-3985-1016
+- icon: osf
+  icon_pack: ai
+  link: https://osf.io/2cyj7
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.com/citations?user=I_yFsYUAAAAJ&hl=en
