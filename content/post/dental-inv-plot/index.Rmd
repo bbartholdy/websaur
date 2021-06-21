@@ -1,0 +1,175 @@
+---
+title: Dental Plotting Tutorial
+author: admin
+date: '2021-06-21'
+tags:
+  - dental
+  - rmarkdown
+categories: []
+subtitle: ''
+summary: "A guide to plotting teeth stuff."
+authors: []
+featured: false
+disable_jquery: no
+image:
+  placement: 3
+  caption: ''
+projects: []
+draft: true
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(cowplot)
+```
+
+This is a tutorial on an intuitive (or at very least, pretty) way to visualise a
+dental inventory in a sample. It requires only a basic knowledge of R, and, of
+course, that you have installed it along with RStudio.
+
+Required packages:
+
+- tidyverse
+- cowplot
+
+### Upload data
+
+```{r upload}
+dental_inv <- readr::read_csv("https://raw.githubusercontent.com/bbartholdy/dental-inv-plot/main/data/dental-inv.csv")
+```
+
+The variables are:
+
+| variable name | description |
+|----|----|
+| feat | skeletal identifier |
+| find | skeletal identifier |
+| t11:18; t21:28; t31:38; t41:48 | status of tooth (t + FDI notation). <br> p = present; m = missing; dna = removed for dna sampling; aml = antemortem loss. |
+
+![https://www.careforsmiles.com.au/images/FDI-tooth-numbering-adult.png](/img/dental-inv-plot/FDI-tooth-numbering-adult.png)
+
+### Convert data to long format
+
+First step is to convert the data to long format with the `pivot_longer` function.
+This will take all of the tooth columns and combine them to two columns; one with
+the tooth name, and one with the tooth status.
+
+```{r make-long}
+dental_inv_long <- dental_inv %>%
+  pivot_longer(t11:t48, names_to = "tooth", values_to = "status")
+```
+
+```{r show-long}
+dental_inv_long %>%
+  slice_head(n = 10) # show first 10 entries
+```
+
+<br>
+
+It would also be useful to have a column that indicates to which region of the 
+mouth the tooth belongs.
+
+```{r}
+maxilla <- c(paste0("t", 11:18), paste0("t", 21:28))
+left <- c(paste0("t", 21:28), paste0("t", 31:38))
+
+dental_inv_long <- dental_inv %>%
+  pivot_longer(t11:t48, names_to = "tooth", values_to = "status") %>%
+   mutate(region = if_else(tooth %in% maxilla, "maxilla", "mandible"), 
+         side = if_else(tooth %in% left, "left", "right"), .before = status)
+```
+
+<br>
+
+### Prepare separate plots
+
+Indicate order of the teeth in each region as in the FDI diagram shown above. 
+starting from the upper right third molar. We will use this to reorder the 
+teeth shown in the plot.
+
+```{r tooth-order}
+upper_order <- c(paste0("t", 18:11), paste0("t", 21:28))
+lower_order <- c(paste0("t", 48:41), paste0("t", 31:38))
+upper_order
+lower_order
+```
+
+<br>
+
+The plots for the maxilla and mandible are prepared separately, then combined
+with the **cowplot** package.
+
+First, the plot of the maxillary dentition.
+
+```{r prepare-max}
+# Plot for the maxillary dentition
+maxilla_pl <- dental_inv_long %>%
+  filter(region == "maxilla") %>% # we only want maxillary teeth
+  mutate(tooth = factor(tooth, levels = upper_order)) %>% # make sure the order on the plot is according to the order the teeth are positioned in the mouth
+  ggplot(aes(x = tooth, fill = status)) +
+  geom_bar(position = "stack") + # stacked bar plot
+  theme_minimal() +
+  theme(axis.title.x = element_blank(), # remove x-axis title
+        panel.grid = element_blank()) + # remove ugly gridlines
+  scale_fill_viridis_d() # colour-blind-friendly pallette
+maxilla_pl
+```
+
+<br>
+
+In order for the plots to have a shared legend, rather than two identical legends,
+we need to extract the legend from the plots using the `get_legend` function, 
+then remove it from the plot.
+
+```{r prepare-legend}
+pl_legend <- get_legend(maxilla_pl) # extract legend from plot
+maxilla_pl <- maxilla_pl + theme(legend.position = "none") # remove legend
+maxilla_pl
+```
+
+<br>
+
+Then, the plot of the mandibular dentition (without a legend).
+
+```{r prepare-mand}
+# Plot for the mandibular dentition
+mandible_pl <- dental_inv_long %>%
+  filter(region == "mandible") %>%
+  mutate(tooth = factor(tooth, levels = lower_order)) %>%
+  ggplot(aes(x = tooth, fill = status)) +
+  geom_bar(position = "stack") +
+  theme_minimal() +
+  theme(axis.title.x = element_blank(),
+        panel.grid = element_blank(),
+        legend.position = "none") +
+  scale_fill_viridis_d()
+
+mandible_pl
+```
+
+<br>
+
+### Combine plots
+
+The two dental plots are combined using the `plot_grid` function in the **cowplot**
+package.
+
+```{r combine-pl}
+plot_comb <- plot_grid(maxilla_pl, mandible_pl, 
+                       ncol = 1) # ncol = 1 so the plots are one on top of the other
+plot_comb
+```
+
+<br>
+
+Then we add the legend to another `plot_grid` and adjust the width.
+
+```{r final-pl}
+plot_grid(plot_comb, pl_legend, nrow = 1, rel_widths = c(4,1))
+```
+
+<br>
+
+And done! This gives (in my opinion) a nice, intuitive overview of the dental
+inventory in a sample, and could also be used to look at dental diseases 
+(caries, calculus, periodontitis, etc).
