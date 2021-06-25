@@ -1,5 +1,5 @@
 ---
-title: Dental Plotting Tutorial
+title: Plotting Dental Inventory with ggplot2
 author: admin
 date: '2021-06-21'
 links:
@@ -8,11 +8,12 @@ links:
   name: Edit
   url: https://github.com/bbartholdy/dental-inv-plot
 tags:
-  - dental
-  - rmarkdown
+  - dental anthropology
+  - r
+  - data visualisation
 categories: []
 subtitle: ''
-summary: "A guide to plotting teeth stuff."
+summary: "A bioarchaeologist's guide to plotting dental inventory in a sample of skeletal remains."
 featured: false
 disable_jquery: no
 image:
