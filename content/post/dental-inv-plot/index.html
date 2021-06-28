@@ -13,7 +13,7 @@ tags:
   - data visualisation
 categories: []
 subtitle: ''
-summary: "A bioarchaeologist's guide to plotting dental status in a sample of skeletal remains."
+summary: "A bioarchaeologist's guide to plotting dental inventory in a sample of skeletal remains."
 featured: false
 disable_jquery: no
 image:
@@ -32,7 +32,7 @@ course, that you have installed it along with RStudio.</p>
 <p>Required packages:</p>
 <ul>
 <li>tidyverse</li>
-<li>cowplot</li>
+<li>patchwork</li>
 </ul>
 <div id="upload-data" class="section level3">
 <h3>Upload data</h3>
@@ -73,7 +73,7 @@ course, that you have installed it along with RStudio.</p>
 </tbody>
 </table>
 <div class="figure">
-<img src="/img/dental-inv-plot/FDI-tooth-numbering-adult.png" alt="" />
+<img src="./img/FDI-tooth-numbering-adult.png" alt="" />
 <p class="caption"><a href="https://www.careforsmiles.com.au/images/FDI-tooth-numbering-adult.png" class="uri">https://www.careforsmiles.com.au/images/FDI-tooth-numbering-adult.png</a></p>
 </div>
 </div>
@@ -104,7 +104,6 @@ the tooth name, and one with the tooth status.</p>
 mouth the tooth belongs.</p>
 <pre class="r"><code>maxilla &lt;- c(paste0(&quot;t&quot;, 11:18), paste0(&quot;t&quot;, 21:28))
 left &lt;- c(paste0(&quot;t&quot;, 21:28), paste0(&quot;t&quot;, 31:38))
-
 dental_inv_long &lt;- dental_inv %&gt;%
   pivot_longer(t11:t48, names_to = &quot;tooth&quot;, values_to = &quot;status&quot;) %&gt;%
    mutate(region = if_else(tooth %in% maxilla, &quot;maxilla&quot;, &quot;mandible&quot;), 
@@ -126,8 +125,8 @@ upper_order</code></pre>
 ## [13] &quot;t35&quot; &quot;t36&quot; &quot;t37&quot; &quot;t38&quot;</code></pre>
 <p><br></p>
 <p>The plots for the maxilla and mandible are prepared separately, then combined
-with the <strong>cowplot</strong> package.</p>
-<p>First, the plot of the maxillary dentition.</p>
+with the <strong>patchwork</strong> package.</p>
+<p>First, the plot of the maxillary dentition:</p>
 <pre class="r"><code># Plot for the maxillary dentition
 maxilla_pl &lt;- dental_inv_long %&gt;%
   filter(region == &quot;maxilla&quot;) %&gt;% # we only want maxillary teeth
@@ -141,15 +140,7 @@ maxilla_pl &lt;- dental_inv_long %&gt;%
 maxilla_pl</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/prepare-max-1.png" width="672" /></p>
 <p><br></p>
-<p>In order for the plots to have a shared legend, rather than two identical legends,
-we need to extract the legend from the plots using the <code>get_legend</code> function,
-then remove it from the plot.</p>
-<pre class="r"><code>pl_legend &lt;- get_legend(maxilla_pl) # extract legend from plot
-maxilla_pl &lt;- maxilla_pl + theme(legend.position = &quot;none&quot;) # remove legend
-maxilla_pl</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/prepare-legend-1.png" width="672" /></p>
-<p><br></p>
-<p>Then, the plot of the mandibular dentition (without a legend).</p>
+<p>Then, the plot of the mandibular dentition:</p>
 <pre class="r"><code># Plot for the mandibular dentition
 mandible_pl &lt;- dental_inv_long %&gt;%
   filter(region == &quot;mandible&quot;) %&gt;%
@@ -158,25 +149,26 @@ mandible_pl &lt;- dental_inv_long %&gt;%
   geom_bar(position = &quot;stack&quot;) +
   theme_minimal() +
   theme(axis.title.x = element_blank(),
-        panel.grid = element_blank(),
-        legend.position = &quot;none&quot;) +
+        panel.grid = element_blank()) +
   scale_fill_viridis_d()
-
 mandible_pl</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/prepare-mand-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="combine-plots" class="section level3">
 <h3>Combine plots</h3>
-<p>The two dental plots are combined using the <code>plot_grid</code> function in the <strong>cowplot</strong>
-package.</p>
-<pre class="r"><code>plot_comb &lt;- plot_grid(maxilla_pl, mandible_pl, 
-                       ncol = 1) # ncol = 1 so the plots are one on top of the other
-plot_comb</code></pre>
+<p>UPDATE: The two dental plots are easily combined using the <strong>patchwork</strong> package.
+Thanks @<a href="https://twitter.com/jfy133">jfy133</a> for bringing it to my
+attention! (and of course @<a href="https://twitter.com/thomasp85">thomasp85</a>, the
+package developer)</p>
+<p>We will combine them using <code>/</code> instead of <code>+</code>, because we want one on top of the
+other to mimic the maxilla’s and mandible’s position in the mouth:</p>
+<pre class="r"><code>maxilla_pl / mandible_pl</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/combine-pl-1.png" width="672" /></p>
 <p><br></p>
-<p>Then we add the legend to another <code>plot_grid</code> and adjust the width.</p>
-<pre class="r"><code>plot_grid(plot_comb, pl_legend, nrow = 1, rel_widths = c(4,1))</code></pre>
+<p>The <code>plot_layout</code> function allows us to easily combine the identical
+legends.</p>
+<pre class="r"><code>maxilla_pl / mandible_pl + plot_layout(guides = &quot;collect&quot;)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/final-pl-1.png" width="672" /></p>
 <p><br></p>
 <p>And done! This gives (in my opinion) a nice, intuitive overview of the dental

@@ -23,9 +23,11 @@ projects: []
 draft: false
 ---
 
+
 ```{r setup, include=FALSE}
 library(tidyverse)
-library(cowplot)
+#library(cowplot) # combining the plots is more efficient with patchwork
+library(patchwork)
 ```
 
 This is a tutorial on an intuitive (or at very least, pretty) way to visualise a
@@ -35,7 +37,7 @@ course, that you have installed it along with RStudio.
 Required packages:
 
 - tidyverse
-- cowplot
+- patchwork
 
 ### Upload data
 
@@ -51,7 +53,7 @@ The variables are:
 | find | skeletal identifier |
 | t11:18; t21:28; t31:38; t41:48 | status of tooth (t + FDI notation). <br> p = present; m = missing; dna = removed for dna sampling; aml = antemortem loss. |
 
-![https://www.careforsmiles.com.au/images/FDI-tooth-numbering-adult.png](/img/dental-inv-plot/FDI-tooth-numbering-adult.png)
+![https://www.careforsmiles.com.au/images/FDI-tooth-numbering-adult.png](./img/FDI-tooth-numbering-adult.png)
 
 ### Convert data to long format
 
@@ -77,7 +79,6 @@ mouth the tooth belongs.
 ```{r}
 maxilla <- c(paste0("t", 11:18), paste0("t", 21:28))
 left <- c(paste0("t", 21:28), paste0("t", 31:38))
-
 dental_inv_long <- dental_inv %>%
   pivot_longer(t11:t48, names_to = "tooth", values_to = "status") %>%
    mutate(region = if_else(tooth %in% maxilla, "maxilla", "mandible"), 
@@ -102,9 +103,9 @@ lower_order
 <br>
 
 The plots for the maxilla and mandible are prepared separately, then combined
-with the **cowplot** package.
+with the **patchwork** package.
 
-First, the plot of the maxillary dentition.
+First, the plot of the maxillary dentition:
 
 ```{r prepare-max}
 # Plot for the maxillary dentition
@@ -122,19 +123,7 @@ maxilla_pl
 
 <br>
 
-In order for the plots to have a shared legend, rather than two identical legends,
-we need to extract the legend from the plots using the `get_legend` function, 
-then remove it from the plot.
-
-```{r prepare-legend}
-pl_legend <- get_legend(maxilla_pl) # extract legend from plot
-maxilla_pl <- maxilla_pl + theme(legend.position = "none") # remove legend
-maxilla_pl
-```
-
-<br>
-
-Then, the plot of the mandibular dentition (without a legend).
+Then, the plot of the mandibular dentition:
 
 ```{r prepare-mand}
 # Plot for the mandibular dentition
@@ -145,10 +134,8 @@ mandible_pl <- dental_inv_long %>%
   geom_bar(position = "stack") +
   theme_minimal() +
   theme(axis.title.x = element_blank(),
-        panel.grid = element_blank(),
-        legend.position = "none") +
+        panel.grid = element_blank()) +
   scale_fill_viridis_d()
-
 mandible_pl
 ```
 
@@ -156,21 +143,25 @@ mandible_pl
 
 ### Combine plots
 
-The two dental plots are combined using the `plot_grid` function in the **cowplot**
-package.
+UPDATE: The two dental plots are easily combined using the **patchwork** package.
+Thanks @[jfy133](https://twitter.com/jfy133) for bringing it to my 
+attention! (and of course @[thomasp85](https://twitter.com/thomasp85), the 
+package developer)
+
+We will combine them using `/` instead of `+`, because we want one on top of the
+other to mimic the maxilla's and mandible's position in the mouth:
 
 ```{r combine-pl}
-plot_comb <- plot_grid(maxilla_pl, mandible_pl, 
-                       ncol = 1) # ncol = 1 so the plots are one on top of the other
-plot_comb
+maxilla_pl / mandible_pl
 ```
 
 <br>
 
-Then we add the legend to another `plot_grid` and adjust the width.
+The `plot_layout` function allows us to easily combine the identical
+legends.
 
 ```{r final-pl}
-plot_grid(plot_comb, pl_legend, nrow = 1, rel_widths = c(4,1))
+maxilla_pl / mandible_pl + plot_layout(guides = "collect")
 ```
 
 <br>
