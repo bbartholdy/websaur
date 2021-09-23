@@ -76,7 +76,7 @@ subtitle = "PhD Student"
   </li>
     
   <li>
-    <a href="https://https://osf.io/2cyj7/" target="_blank" rel="noopener">
+    <a href="files/cv.pdf" target="_blank" rel="noopener">
       <i class="ai ai-cv big-icon"></i>
     </a>
   </li>
