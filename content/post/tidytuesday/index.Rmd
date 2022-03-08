@@ -5,6 +5,8 @@ date: '2020-10-12'
 tags:
   - tidytuesday
   - rmarkdown
+  - R
+  - ggplot
 categories: []
 subtitle: ''
 summary: "A simple guide to participating in Tidy Tuesday"

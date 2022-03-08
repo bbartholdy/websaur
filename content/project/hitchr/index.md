@@ -2,7 +2,7 @@
 date: "2020-04-13T00:00:00Z"
 external_link: ""
 image:
-  caption: "Image credit: Mellisa Thew"
+  caption: ""
   focal_point: Smart
 links:
 - icon: github
@@ -12,9 +12,9 @@ links:
 slides: ""
 summary: Random sample generator based on The Hitchhiker's Guide to the Galaxy.
 categories:
-- other
+- r
 tags:
-- R-package
+- r
 title: hitchr
 draft: true
 url_code: ""

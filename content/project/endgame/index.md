@@ -15,14 +15,15 @@ links:
   url: https://myphd.netlify.app
 slides: ""
 summary: Continuous deployment of my PhD dissertation.
-categories:
-- opensci
+categories: ["opensci", "r"]
 tags:
 - PhD dissertation
+- r
 - bookdown
 - netlify
 - GitHub
-- dental calculus
+- calculus
+- opensci
 title: Continuous deployment dissertation
 url_code: ""
 url_pdf: ""

@@ -11,12 +11,10 @@ links:
   url: http://harvestproject.eu/
 slides: ""
 summary: ERC-funded project on plant foods in human evolution.
-categories:
-- calculus
+categories: ["calculus"]
 tags:
 - diet
 - calculus
-- dental calculus
 title: HARVEST Plant foods in Human Evolution
 url_code: ""
 url_pdf: ""

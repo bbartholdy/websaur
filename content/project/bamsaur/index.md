@@ -15,10 +15,10 @@ links:
   url: https://websaur.shinyapps.io/bamsaurapp/
 slides: ""
 summary: Age-at-death estimation on skeletal remains using dental wear.
-categories:
-- other
+categories: ["dental", "r"]
 tags:
-- dental wear
+- dental
+- r
 - age-at-death estimation
 title: BAMSAUR
 url_code: ""

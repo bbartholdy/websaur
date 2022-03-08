@@ -24,14 +24,22 @@ subtitle = ""
   [[content.filter_button]]
     name = "All"
     tag = "*"
-  
+    
+  [[content.filter_button]]
+    name = "Open Science"
+    tag = "opensci"
+
   [[content.filter_button]]
     name = "Calculus"
     tag = "calculus"
     
   [[content.filter_button]]
-    name = "Open Science"
-    tag = "opensci"
+    name = "Dental"
+    tag = "dental"
+    
+  [[content.filter_button]]
+    name = "R"
+    tag = "r"
   
   [[content.filter_button]]
     name = "Other"

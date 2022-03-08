@@ -1,6 +1,6 @@
 ---
-title: Plotting Dental Inventory with ggplot2
-author: admin
+title: "Plotting Dental Inventory with ggplot2"
+author: "admin"
 date: '2021-06-21'
 links:
 - icon: github
@@ -8,19 +8,21 @@ links:
   name: Edit
   url: https://github.com/bbartholdy/dental-inv-plot
 tags:
-  - dental anthropology
-  - r
-  - data visualisation
+- dental anthropology
+- R
+- ggplot
+- data visualisation
 categories: []
 subtitle: ''
-summary: "A bioarchaeologist's guide to plotting dental inventory in a sample of skeletal remains."
-featured: false
+summary: A bioarchaeologist's guide to plotting dental inventory in a sample of skeletal
+  remains.
+featured: yes
 disable_jquery: no
 image:
   placement: 3
   caption: ''
 projects: []
-draft: false
+draft: no
 ---
 
 
@@ -53,7 +55,7 @@ The variables are:
 | find | skeletal identifier |
 | t11:18; t21:28; t31:38; t41:48 | status of tooth (t + FDI notation). <br> p = present; m = missing; dna = removed for dna sampling; aml = antemortem loss. |
 
-![https://www.careforsmiles.com.au/images/FDI-tooth-numbering-adult.png](./img/FDI-tooth-numbering-adult.png)
+![https://www.careforsmiles.com.au/images/FDI-tooth-numbering-adult.png](/img/dental-inv-plot/FDI-tooth-numbering-adult.png)
 
 ### Convert data to long format
 

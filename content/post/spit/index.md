@@ -9,7 +9,7 @@ diagram: true
 image:
   placement: 3
   caption: 'Image credit: [**Hans Reniers**](https://unsplash.com/photos/lQGJCMY5qcM)'
-featured: true
+featured: false
 url_source: https://leidenarchaeologyblog.nl/articles/spit-tartar-and-burial-an-experiments-diary
 projects: [harvest]
 ---
