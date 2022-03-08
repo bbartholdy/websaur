@@ -28,6 +28,10 @@ subtitle = ""
   [[content.filter_button]]
     name = "Calculus"
     tag = "calculus"
+    
+  [[content.filter_button]]
+    name = "Open Science"
+    tag = "opensci"
   
   [[content.filter_button]]
     name = "Other"
