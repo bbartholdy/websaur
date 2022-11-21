@@ -74,6 +74,12 @@ subtitle = "PhD Student"
       <i class="fab fa-github big-icon"></i>
     </a>
   </li>
+  
+  <li>
+    <a href="https://archaeo.social/@Rchaeology" target="_blank" rel="me">
+      <i class="fab fa-mastodon big-icon"></i>
+    </a>
+  </li>
     
   <li>
     <a href="files/cv.pdf" target="_blank" rel="noopener">
